@@ -19,7 +19,7 @@
 
 當程式中包含 for 迴圈時，可以參考以下標準流程圖格式：
 
-```
+```mermaid
 flowchart TD
     A[開始] --> B[初始化變數 i = 1]
     B --> C{條件判斷: i < 10?}
@@ -51,7 +51,7 @@ flowchart TD
 
 當程式中包含 while 迴圈時，可以參考以下標準流程圖格式：
 
-```
+```mermaid
 flowchart TD
     A[開始] --> B[初始化變數]
     B --> C{條件判斷}
