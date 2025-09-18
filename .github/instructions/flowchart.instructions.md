@@ -15,27 +15,113 @@
    - 流程使用箭頭連接，例如 A 指向 B 使用 A --> B。
    - 輸出或動作使用方框表示。
 
+## For 迴圈流程圖範例
+
+當程式中包含 for 迴圈時，可以參考以下標準流程圖格式：
+
+```
+flowchart TD
+    A[開始] --> B[初始化變數 i = 1]
+    B --> C{條件判斷: i < 10?}
+    C -->|是| D[執行迴圈內容]
+    D --> E[i = i + 1]
+    E --> C
+    C -->|否| F[迴圈結束]
+    F --> G[後續處理]
+    G --> H[結束]
+
+    subgraph "For 迴圈"
+        B
+        C
+        D
+        E
+    end
+
+    %% 樣式設定
+    classDef condition fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef terminal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+
+    class C condition
+    class D,E,G process
+    class A,F,H terminal
+```
+
+## While 迴圈流程圖範例
+
+當程式中包含 while 迴圈時，可以參考以下標準流程圖格式：
+
+```
+flowchart TD
+    A[開始] --> B[初始化變數]
+    B --> C{條件判斷}
+    C -->|是| D[執行迴圈內容]
+    D --> E[更新變數]
+    E --> C
+    C -->|否| F[迴圈結束]
+    F --> G[後續處理]
+    G --> H[結束]
+
+    subgraph "While 迴圈"
+        C
+        D
+        E
+    end
+
+    %% 樣式設定
+    classDef condition fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef terminal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+
+    class C condition
+    class B,D,E,G process
+    class A,F,H terminal
+```
+
 ## 範例流程圖
 
 針對 StringReplace.md 中的程式邏輯，可以添加以下流程圖：
 
 ```
-graph TD
-    A[開始] --> B[設定 i 從 1 到 100]
-    B --> C{i 是 2 和 3 的倍數嗎？}
-    C -->|是| D[輸出 金槍魚]
-    C -->|否| E{i 是 2 的倍數嗎？}
-    E -->|是| F[輸出 螃蟹]
-    E -->|否| G{i 是 3 的倍數嗎？}
-    G -->|是| H[輸出 章魚]
-    G -->|否| I[輸出 i]
-    D --> J[繼續下一個 i]
-    F --> J
-    H --> J
-    I --> J
-    J --> K{i 小於等於 100 嗎？}
-    K -->|是| B
-    K -->|否| L[結束]
+flowchart TD
+    A[開始] --> B[初始化變數 i = 1]
+    B --> C{條件判斷: i <= 100?}
+    C -->|是| D{i 是 2 和 3 的倍數嗎？}
+    D -->|是| E[輸出 金槍魚]
+    D -->|否| F{i 是 2 的倍數嗎？}
+    F -->|是| G[輸出 螃蟹]
+    F -->|否| H{i 是 3 的倍數嗎？}
+    H -->|是| I[輸出 章魚]
+    H -->|否| J[輸出 i]
+    E --> K[i = i + 1]
+    G --> K
+    I --> K
+    J --> K
+    K --> C
+    C -->|否| L[迴圈結束]
+    L --> M[結束]
+
+    subgraph "For 迴圈"
+        B
+        C
+        D
+        E
+        F
+        G
+        H
+        I
+        J
+        K
+    end
+
+    %% 樣式設定
+    classDef condition fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef terminal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+
+    class C,D,F,H condition
+    class E,G,I,J,K process
+    class A,L,M terminal
 ```
 
 ## 注意事項
